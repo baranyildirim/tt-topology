@@ -28,4 +28,4 @@ jobs:
         run: dnf builddep --assumeyes --spec packaging/tt-topology.spec
       - name: Build RPM on Fedora
         run: |
-          rpmbuild -br packaging/tt-topology.spec
+          rpmbuild --define "_topdir `pwd`" -br packaging/tt-topology.spec
