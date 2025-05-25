@@ -26,7 +26,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n tt-topology-%{version}
-%{__python3} -m pip install .
 
 %generate_buildrequires
 %pyproject_buildrequires -R
@@ -40,6 +39,7 @@ Summary:        %{summary}
 %pyproject_install
 # Add top-level Python module names here as arguments, you can use globs
 %pyproject_save_files tt_topology
+%{__python3} -m pip install .
 
 
 %check
