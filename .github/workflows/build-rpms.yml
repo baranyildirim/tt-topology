@@ -7,12 +7,20 @@ jobs:
     container:
       image: fedora:41
     steps:
+      - name: Install build tooling
+        run: >-
+          dnf install
+          --assumeyes
+          dnf-plugins-core
+          rpm-build
+      - name: Create rpmbuild directory structure on a community distro
+        run: rpmdev-setuptree
       - name: Install static build requirements
         run: dnf builddep --assumeyes --spec packaging/tt-topology.spec
       - name: Fetch sources and patches on a community distro
         run: >-
           spectool --all --get-files --sourcedir
-          packaging/tt-topology.spec
+          packaging/tt-topology.spec || ls
       - name: Build RPM on Fedora
         run: |
           rpmbuild -br packaging/tt-topology.spec
