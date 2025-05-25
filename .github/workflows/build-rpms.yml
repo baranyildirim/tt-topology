@@ -11,4 +11,8 @@ jobs:
         uses: actions/checkout@v4.1.1
       - name: Run build script
         run: ./packaging/build-rpms.sh
+      - name: Install the packaged binary RPM on the system
+        run: dnf install --assumeyes rpmbuild/SRPMS/*.rpm
+      - name: Smoke-test the installed RPM
+        run: tt-topology
 
