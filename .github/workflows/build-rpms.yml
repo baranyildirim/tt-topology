@@ -18,6 +18,8 @@ jobs:
           rpmdevtools
       - name: Create rpmbuild directory structure on a community distro
         run: rpmdev-setuptree
+      - name: Display directory view
+        run: ls
       - name: Install static build requirements
         run: dnf builddep --assumeyes --spec packaging/tt-topology.spec
       - name: Fetch sources and patches on a community distro
