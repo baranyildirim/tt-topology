@@ -9,23 +9,6 @@ jobs:
     steps:
       - name: Grab the source from Git
         uses: actions/checkout@v4.1.1
-      - name: Install build tooling
-        run: >-
-          dnf install
-          --assumeyes
-          dnf-plugins-core
-          rpm-build
-          rpmdevtools
-      - name: Create rpmbuild directory structure on a community distro
-        run: mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
-      - name: Display directory view
-        run: ls
-      - name: Fetch sources and patches on a community distro
-        run: >-
-          spectool --all --get-files --sourcedir
-          packaging/tt-topology.spec
-      - name: Install static build requirements
-        run: dnf builddep --assumeyes --spec packaging/tt-topology.spec
-      - name: Build RPM on Fedora
-        run: |
-          cp packaging/tt-topology.spec tt-topology.spec && rpmbuild --define "_topdir `pwd`" -br tt-topology.spec
+      - name: Run build script
+        run: ./packaging/build-rpms.sh
+
