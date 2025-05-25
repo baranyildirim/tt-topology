@@ -7,7 +7,6 @@ License:       Apache
 BuildRequires: python3-devel
 BuildRequires: pyproject-rpm-macros
 
-%description   tt-topology
 %generate_buildrequires
 %pyproject_buildrequires
 %build
