@@ -17,7 +17,7 @@ jobs:
           rpm-build
           rpmdevtools
       - name: Create rpmbuild directory structure on a community distro
-        run: rpmdev-setuptree
+        run: mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
       - name: Display directory view
         run: ls
       - name: Fetch sources and patches on a community distro
@@ -28,4 +28,4 @@ jobs:
         run: dnf builddep --assumeyes --spec packaging/tt-topology.spec
       - name: Build RPM on Fedora
         run: |
-          rpmbuild --define "_topdir `pwd`" -br packaging/tt-topology.spec
+          rpmbuild --define "_topdir `pwd`" -ba packaging/tt-topology.spec
