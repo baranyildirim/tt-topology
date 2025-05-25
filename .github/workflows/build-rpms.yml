@@ -13,6 +13,7 @@ jobs:
           --assumeyes
           dnf-plugins-core
           rpm-build
+          rpmdevtools
       - name: Create rpmbuild directory structure on a community distro
         run: rpmdev-setuptree
       - name: Install static build requirements
