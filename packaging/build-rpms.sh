@@ -10,7 +10,7 @@ SPEC_FILE="packaging/python-tt-topology.spec"
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 cd $SCRIPT_DIR/..
 
-sudo dnf install --assumeyes dnf-plugins-core rpm-build rpmdevtools python3-devel git gcc g++
+sudo dnf install --assumeyes dnf-plugins-core rpm-build rpmdevtools python3-devel python3-wheel python3-setuptools git gcc g++
 mkdir -pv rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 spectool --all --get-files --sourcedir "$SPEC_FILE"
 mkdir $PACKAGE_VERSIONED_NAME
