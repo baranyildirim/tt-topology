@@ -7,6 +7,8 @@ jobs:
     container:
       image: fedora:41
     steps:
+      - name: Grab the source from Git
+        uses: actions/checkout@v4.1.1
       - name: Install build tooling
         run: >-
           dnf install
